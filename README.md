@@ -8,7 +8,17 @@
 
 ![Language](https://img.shields.io/badge/language-Haskell-purple)
 ![Build](https://img.shields.io/badge/build-Cabal-blue)
-![Status](https://img.shields.io/badge/status-Complete-brightgreen)
+![Grade](https://img.shields.io/badge/Grade-18%2F20-brightgreen)
+
+---
+
+## Hall of Fame
+
+This project was featured in the **LI1 Hall of Fame** at Universidade do Minho.
+
+**Play the game online:** [Immutable Towers - Web Version](https://haslab.github.io/Teaching/LI1/HallOfFame/2425_web/2024li1g009.jsexe/run.html)
+
+**Browse other featured projects:** [LI1 Hall of Fame](https://haslab.github.io/Teaching/LI1/HallOfFame/)
 
 ---
 
