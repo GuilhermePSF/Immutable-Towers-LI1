@@ -1,99 +1,149 @@
-<h1 style="display: inline-flex; align-items: center;">
-  
-  <div style="font-size: 90px; margin-bottom: 20px line-height: 1;">
-    <img src="https://raw.githubusercontent.com/GuilhermePSF/Immutable-Towers-LI1/refs/heads/main/images/inimigo/sulD.bmp" 
-       alt="Icon" 
-       style="height: 60px; margin-top: 10px;" />
-    I M M U T A B L E&nbsp;&nbsp;T O W E R S
-  <img src="https://raw.githubusercontent.com/GuilhermePSF/Immutable-Towers-LI1/refs/heads/main/images/inimigo/esteD.bmp" 
-       alt="Icon" 
-       style="height: 60px; margin-top: 10px;" />
-  </div>
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/GuilhermePSF/Immutable-Towers-LI1/refs/heads/main/images/inimigo/sulD.bmp" alt="South Tower" height="60" />
+  &nbsp;&nbsp;IMMUTABLE TOWERS&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/GuilhermePSF/Immutable-Towers-LI1/refs/heads/main/images/inimigo/esteD.bmp" alt="East Tower" height="60" />
 </h1>
 
-## Visão Geral do Projeto
+> A functional interpretation of the classic **Tower Defense** genre, implemented in **Haskell** with a graphical interface powered by **gloss**. Players must strategically position towers to prevent waves of enemies from reaching their base, utilizing different projectile types with unique synergies and effects. Built for *Laboratórios de Informática I* (1st year, Software Engineering — Universidade do Minho).
 
-Este projeto foi desenvolvido no âmbito da unidade curricular **Laboratórios de Informática I** (2024/2025), da **Licenciatura em Engenharia Informática** da **Universidade do Minho**.
+![Language](https://img.shields.io/badge/language-Haskell-purple)
+![Build](https://img.shields.io/badge/build-Cabal-blue)
+![Status](https://img.shields.io/badge/status-Complete-brightgreen)
 
-**Immutable Towers** é uma interpretação funcional do clássico género *Tower Defense*, desenvolvida em **Haskell**, com interface gráfica baseada em **gloss**. O jogador deve posicionar torres estrategicamente para impedir que ondas de inimigos cheguem à base, utilizando diferentes tipos de projéteis com sinergias e efeitos.
+---
 
-> Para mais detalhes sobre as regras do projeto: [Descrição Oficial](https://github.com/GuilhermePSF/Immutable-Towers-LI1/blob/main/Enunciado.pdf)
+## Requirements
 
-## Autores
+| Dependency | Notes |
+|---|---|
+| GHC | Glasgow Haskell Compiler |
+| Cabal | Haskell build tool |
+| gloss | Graphics library for rendering |
+| HUnit | Unit testing framework |
 
-- **Guilherme Ferreira** — A11042  
-- **Lucas Pinto** — A111042
+---
 
-## Funcionalidades
+## Build
 
-- Simulação completa de um jogo *Tower Defense*
-- Diferentes tipos de terrenos: relva, terra e água
-- Torres com projéteis variados e sinergias:
-  - **Fogo** 🔥 – dano contínuo
-  - **Gelo** ❄️ – congela inimigos
-  - **Resina** 🟡 – reduz velocidade
-  - **Veneno** ☠️ – aplica efeitos mais fracos de Fogo e Resina
-- Inimigos com estados ativos, direção, vida e velocidade
-- Portais com ondas programadas de inimigos
-- Sistema de loja e compra de torres
-- Interface gráfica com animações, interação por rato e visão isométrica
-- Sistema de níveis, saves e carregamento de jogo
-- Efeitos visuais e suporte a torres com **lasers**
+From the project root:
+```bash
+cabal build
+```
 
-## Instalação e Execução
+This produces the game executable from the Haskell sources.
 
-Certifique-se de ter o **GHC** e o **Cabal** instalados.
+---
 
-Para compilar e executar o jogo:
+## Usage
 
-```sh
+### Play the game
+
+Launch the interactive graphical interface:
+```bash
 cabal run
 ```
 
-Para correr os testes:
+The game features:
+- Mouse-driven interaction for tower placement and upgrades
+- Strategic resource management through the in-game shop
+- Progressive difficulty through wave-based enemy spawning
+- Level progression system with save/load functionality
 
-```sh
+### Run tests
+
+Execute the automated test suite:
+```bash
 cabal test
 ```
 
-## Estrutura do Projeto
+---
 
-| Módulo       | Descrição                                      |
-|--------------|------------------------------------------------|
-| `Mapa.hs`    | Representação e validação do mapa              |
-| `Base.hs`    | Estado e mecânica da base do jogador           |
-| `Torre.hs`   | Definições de torres e projéteis               |
-| `Inimigo.hs` | Movimento e efeitos dos inimigos               |
-| `Portal.hs`  | Geração e gestão de ondas de inimigos          |
-| `Jogo.hs`    | Estado global do jogo                          |
-| `Main.hs`    | Interface gráfica usando gloss                 |
-| `Testes.hs`  | Testes unitários com **HUnit**                 |
+## Gameplay Mechanics
 
-## Extras Implementados
+### Terrain Types
+- **Grass** — standard buildable terrain
+- **Dirt** — alternative buildable surface
+- **Water** — non-buildable obstacle
 
-Este projeto inclui diversas funcionalidades adicionais que vão além do enunciado original:
+### Tower Types & Projectiles
 
-- 🌐 **Isometria**: representação visual mais rica do mapa
-- ⚡ **Novos poderes e tipos de torre**, incluindo **lasers**
-- 🎯 **Interação por rato**: clique para comprar e posicionar torres
-- ✨ **Animações visuais** para eventos no jogo
-- 🎮 **Sistema de níveis** com progressão
-- 💾 **Sistema de saves** e carregamento de estado do jogo
+| Projectile | Effect |
+|---|---|
+| **Fire** | Continuous damage over time |
+| **Ice** | Freezes enemies, halting movement |
+| **Resin** | Reduces enemy movement speed |
+| **Poison** | Applies weaker Fire and Resin effects simultaneously |
+| **Laser** | High-damage precision targeting |
 
-## Testes
+### Enemy System
+- Dynamic enemy states with directional movement
+- Health and speed attributes
+- Portal-based wave spawning system
+- Visual status indicators and animations
 
-Os testes foram implementados utilizando a biblioteca **HUnit**.
+---
 
-Para executar todos os testes:
+## Repository Layout
 
-```sh
+```
+immutable-towers/
+├── src/
+│   ├── Main.hs              # Gloss-based graphical interface
+│   ├── Jogo.hs              # Global game state management
+│   ├── Mapa.hs              # Map representation and validation
+│   ├── Base.hs              # Player base state and mechanics
+│   ├── Torre.hs             # Tower definitions and projectile logic
+│   ├── Inimigo.hs           # Enemy movement and effect system
+│   ├── Portal.hs            # Wave generation and portal management
+│   └── Testes.hs            # HUnit test suite
+├── images/                  # Game sprites and visual assets
+│   ├── inimigo/             # Enemy directional sprites
+│   ├── torre/               # Tower graphics
+│   └── terreno/             # Terrain tiles
+├── Enunciado.pdf            # Original project specification (Portuguese)
+└── *.cabal                  # Cabal project configuration
+```
+
+---
+
+## Extended Features
+
+This implementation includes several enhancements beyond the base requirements:
+
+- **Isometric rendering** — Rich visual representation with depth perception
+- **Advanced tower mechanics** — Including laser-based towers with unique targeting
+- **Mouse interaction** — Click-based tower purchasing and positioning
+- **Visual effects** — Animations for combat, projectiles, and game events
+- **Level progression** — Multi-stage difficulty scaling
+- **Persistent state** — Save and load game functionality
+
+---
+
+## Testing
+
+The project includes comprehensive unit tests implemented with **HUnit**.
+
+Run the full test suite:
+```bash
 cabal test
 ```
 
-## Qualidade do Código
+Test coverage includes:
+- Map validation logic
+- Enemy pathfinding and state transitions
+- Tower targeting and damage calculations
+- Projectile synergy effects
+- Portal wave generation
 
-- Estrutura modular em Haskell, com separação clara por responsabilidades
-- Testes automatizados com HUnit
-- Interface reativa com gloss
-- Utilização de `git` para controlo de versões
-- Código documentado com foco em clareza e manutenção
+---
+
+## Documentation
+
+For detailed project specification and requirements, refer to:
+- [`Enunciado.pdf`](Enunciado.pdf) — Original project statement (Portuguese)
+
+---
+
+## Authors
+- Guilherme Ferreira - A111042
+- Lucas Pinto - A111042
